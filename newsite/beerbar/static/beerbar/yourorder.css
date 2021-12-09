@@ -1,0 +1,33 @@
+body{
+    background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+}
+
+
+.main-heading{
+    background-color: #DC143C;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ 
+}
+
+.cart{
+    background-color: #DC143C;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 30px;
+}
+
+.delete-button{
+    display: inline-block;
+        position: relative;
+    
+}
+
+.cartimage{
+    position: relative;
+    left: 260px;
+}
+
+

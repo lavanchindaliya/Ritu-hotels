@@ -1,0 +1,37 @@
+{% extends 'beerbar/base.html' %}
+
+{% block body %}
+{% load static %}
+<html>
+<head>
+    <title>beerbar</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'beerbar/products_room.css' %}">
+</head>
+<body>
+    <div class="main-heading">
+        <h1 style="color: #FFF8DC;">Banquet</h1>
+    </div>
+    <div class="main-container">
+        {% for banquet in all_banquet %}
+        <div class="box0">
+            <div class="sub-containerimg">
+                <a href="http://127.0.0.1:8000/beerbar/yourorder"><img src="{{banquet.image.url}}" width="780" height="300"></a>
+            </div>
+            
+            <div class="sub-container">
+                <h5>{{banquet.name}}</h5>
+                <h7>{{banquet.description}}</h7><br><br>
+                <h7>Number of Plate:- {{banquet.plate}}</h7><br><br>
+                <h7>price:- ₹ {{banquet.price}}</h7><br><br><br>
+                <form action="{% url 'add' banquet.name  banquet.price banquet.category %}" method="POST">{% csrf_token %}
+                    <input type="submit" value="Add to cart!" class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>
+{% endblock %}

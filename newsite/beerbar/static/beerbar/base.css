@@ -1,0 +1,61 @@
+
+a{
+    text-decoration: none;
+    
+}
+
+
+.bottomimagcon{
+    position: relative;
+    bottom: 0px;
+
+}
+
+
+    
+
+
+.box1{
+    background-color:#DC143C;
+    color: #FFF8DC;
+    padding: 20px;
+}
+
+.topnav{
+    background-color:#FFF8DC;
+    overflow: hidden;
+} 
+
+.topnav a {
+    float: left;
+    color:#DC143C;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 17px;
+}
+
+.topnav a:hover{
+    background-color:#DC143C;
+    color: #FFF8DC;
+} 
+
+
+
+.bottom-left{
+    color: white;
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+

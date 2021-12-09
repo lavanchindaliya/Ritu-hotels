@@ -1,0 +1,144 @@
+{% extends 'beerbar/base.html' %}
+
+{% block body %}
+{% load static %}
+<html>
+<head>
+    <title>beerbar</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'beerbar/products_room.css' %}">
+</head>
+<body>
+    <!--body of beer-->
+    <div class="main-heading">
+        <h1 style="color: #FFF8DC;">Services</h1>
+    </div>
+    <div class="main-container">
+        {% for beer in all_beer %}
+        <div class="box0">
+            <div class="sub-containerimg">
+                <a href="http://127.0.0.1:8000/beerbar/yourorder"><img src="{{beer.image.url}}" width="250" height="300"></a>
+            </div>
+            
+            <div class="sub-container">
+                <h5>{{beer.brand}}</h5>
+                <h5>{{beer.name}}</h5>
+                <h7>{{beer.description}}</h7><br><br>
+                <h7>price:- ₹ {{beer.price}}</h7><br><br><br>
+                <button>Add to cart!</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--body of room-->
+    <div class="main-container">
+        {% for room in all_room %}
+        <div class="box0">
+            <div class="sub-containerimg">
+                <a href="http://127.0.0.1:8000/beerbar/yourorder"><img src="{{room.image.url}}" width="780" height="320"></a>
+            </div>
+            
+            <div class="sub-container">
+                <h5>{{room.name}}</h5>
+                <h7>{{room.description}}</h7><br><br>
+                <h7>{{room.duration}} nights</h7><br><br>
+                <h7>price:- ₹ {{room.price}} </h7><br><br><br>
+                <form action="{% url 'add' room.name  room.price room.category %}" method="POST">{% csrf_token %}
+                    <input type="submit" value="Add to cart!"  class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--body of meetings-->
+    <div class="main-container">
+        {% for meeting in all_meeting %}
+        <div class="box0">
+            <div class="sub-containerimg">
+                <a href="http://127.0.0.1:8000/beerbar/yourorder"><img src="{{meeting.image.url}}" width="780" height="300"></a>
+            </div>
+            
+            <div class="sub-container">
+                <h5>{{meeting.brand}}</h5>
+                <h5>{{meeting.name}}</h5>
+                <h7>{{meeting.description}}</h7><br><br>
+                <h7>price:- ₹ {{meeting.price}}</h7><br><br><br>
+                <form action="{% url 'add' meeting.name  meeting.price meeting.category %}" method="POST">{% csrf_token %}
+                    <input type="submit" value="Add to cart!" class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--body of club-->
+    <div class="main-container">
+        {% for club in all_club %}
+        <div class="box0">
+            <div class="sub-containerimg">
+                <a href="http://127.0.0.1:8000/beerbar/yourorder"><img src="{{club.image.url}}" width="780" height="300"></a>
+            </div>
+            
+            <div class="sub-container">
+                <h5>{{club.name}}</h5>
+                <h7>{{club.description}}</h7><br><br>
+                <h7>Number of people:- {{club.people}}</h7><br><br>
+                <h7>price:- ₹ {{club.price}}</h7><br><br><br>
+                <form action="{% url 'add' club.name  club.price club.category %}" method="POST">{% csrf_token %}
+                    <input type="submit" value="Add to cart!" class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--body of restraunts-->
+    <div class="main-container">
+        {% for restaurant in all_restaurant %}
+        <div class="box0">
+            <div class="sub-containerimg">
+                <a href="http://127.0.0.1:8000/beerbar/yourorder"><img src="{{restaurant.image.url}}" width="780" height="300"></a>
+            </div>
+            
+            <div class="sub-container">
+                <h5>{{restaurant.name}}(restaurant)</h5>
+                <h7>{{restaurant.description}}</h7><br><br>
+                <h7>Number of table's :- {{restaurant.Table}}</h7><br><br>
+                <h7>price:- ₹ {{restaurant.price}}</h7><br><br><br>
+                <form action="{% url 'add' restaurant.name  restaurant.price restaurant.category %}" method="POST">{% csrf_token %}
+                    <input type="submit" value="Add to cart!" class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--body of banquet-->
+    <div class="main-container">
+        {% for banquet in all_banquet %}
+        <div class="box0">
+            <div class="sub-containerimg">
+                <a href="http://127.0.0.1:8000/beerbar/yourorder"><img src="{{banquet.image.url}}" width="780" height="300"></a>
+            </div>
+            
+            <div class="sub-container">
+                <h5>{{banquet.name}}</h5>
+                <h7>{{banquet.description}}</h7><br><br>
+                <h7>Number of Plate:- {{banquet.plate}}</h7><br><br>
+                <h7>price:- ₹ {{banquet.price}}</h7><br><br><br>
+                <form action="{% url 'add' banquet.name  banquet.price banquet.category %}" method="POST">{% csrf_token %}
+                    <input type="submit" value="Add to cart!" class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+<script>
+    var currentPage = document.querySelector('.main-heading').innerText.toLowerCase();
+    var navTag = document.querySelector('.' + currentPage);
+    if (currentPage == navTag.innerText.toLowerCase()){
+        navTag.style.backgroundColor = '#DC143C';
+        navTag.style.color = '#FFF8DC';
+    }
+</script>
+</body>
+</html>
+{% endblock %}
